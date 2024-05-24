@@ -1,0 +1,183 @@
+{
+  "main": {
+    "id": "1ac70104cf0a933b",
+    "type": "split",
+    "children": [
+      {
+        "id": "ee5e0c2aac43db49",
+        "type": "tabs",
+        "dimension": 70.0503355704698,
+        "children": [
+          {
+            "id": "42ce972a7b1e0c45",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Datenabfragen.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "03dbb6cf27c93aa8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Crimpy.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "f507662d36988054",
+        "type": "tabs",
+        "dimension": 29.949664429530205,
+        "children": [
+          {
+            "id": "db2620c5d6bb30f1",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "119b8bd275716779",
+    "type": "split",
+    "children": [
+      {
+        "id": "29a1a8e49f89fc73",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8b0f52c8381b8506",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "6e90a371fed52ab5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "05ae8d840435af8b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 259.5
+  },
+  "right": {
+    "id": "e4de9098880d2410",
+    "type": "split",
+    "children": [
+      {
+        "id": "e75a80b703bfc211",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e940ca3dc6e417f3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Datenabfragen.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6118b0cd7866c8ab",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Datenabfragen.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e358062fb48f6f4d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "5a02003eb9280dec",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Datenabfragen.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "42ce972a7b1e0c45",
+  "lastOpenFiles": [
+    "Datenobjekte.md",
+    "Datenabfragen.md",
+    "Crimpy.md"
+  ]
+}

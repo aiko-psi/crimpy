@@ -1,0 +1,28 @@
+{
+  "name": "lambdas",
+  "version": "1.0.0",
+  "description": "Lambdas for project crimpy",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --runInBand",
+    "build-layer-assset": "tsc ",
+    "create-layer": "rm -rf lambda-layer/dependency-layer && mkdir -p lambda-layer/dependency-layer/nodejs && cp -r node_modules lambda-layer/dependency-layer/nodejs "
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.138",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.8",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@typedorm/common": "^1.15.4",
+    "@typedorm/core": "^1.15.4",
+    "aws-sdk": "^2.1628.0",
+    "reflect-metadata": "^0.2.2"
+  }
+}

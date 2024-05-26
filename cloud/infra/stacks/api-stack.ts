@@ -2,7 +2,6 @@ import { Apigatewayv2Api } from "@cdktf/provider-aws/lib/apigatewayv2-api";
 import { Apigatewayv2Integration } from "@cdktf/provider-aws/lib/apigatewayv2-integration";
 import { Apigatewayv2Route } from "@cdktf/provider-aws/lib/apigatewayv2-route";
 import { LambdaFunction } from "@cdktf/provider-aws/lib/lambda-function";
-import { SecurityGroup } from "@cdktf/provider-aws/lib/security-group";
 import { DataArchiveFile } from "@cdktf/provider-archive/lib/data-archive-file";
 import { LambdaLayerVersion } from "@cdktf/provider-aws/lib/lambda-layer-version";
 import { AssetType, TerraformAsset, TerraformStack, Token } from "cdktf";
@@ -12,12 +11,8 @@ import { IamRole } from "@cdktf/provider-aws/lib/iam-role";
 import { ArchiveProvider } from "@cdktf/provider-archive/lib/provider";
 import { Apigatewayv2Stage } from "@cdktf/provider-aws/lib/apigatewayv2-stage";
 import { CloudwatchLogGroup } from "@cdktf/provider-aws/lib/cloudwatch-log-group";
-import { Apigatewayv2VpcLink } from "@cdktf/provider-aws/lib/apigatewayv2-vpc-link";
 
 type Props = {
-  privateSubnetIds: string[];
-  dynamoSecurityGroup: SecurityGroup;
-  apiVPCLinkSecurityGroup: SecurityGroup;
   lamdaDynamoExecutionRole: IamRole;
   apiRoleAccessLambda: IamRole;
 };
@@ -38,15 +33,6 @@ export class APIStack extends TerraformStack {
     this.api = new Apigatewayv2Api(this, "crimpy-api", {
       name: "crimpy-api",
       protocolType: "HTTP",
-    });
-
-    new Apigatewayv2VpcLink(this, "api-vpc-link", {
-      name: "crimpy-api-vpc-link",
-      securityGroupIds: [props.apiVPCLinkSecurityGroup.id],
-      subnetIds: props.privateSubnetIds,
-      tags: {
-        Name: "crimpy-api-vpc-link",
-      },
     });
 
     new Apigatewayv2Stage(this, "crimpy-api-stage-v1", {
@@ -99,8 +85,6 @@ export class APIStack extends TerraformStack {
       "api-handlers/gym-handler.handler",
       codeAssets,
       lambdaLayer,
-      props.privateSubnetIds,
-      props.dynamoSecurityGroup,
       props.lamdaDynamoExecutionRole
     );
 
@@ -131,8 +115,6 @@ export class APIStack extends TerraformStack {
     handler: string,
     codeAssets: TerraformAsset,
     lambdaLayer: LambdaLayerVersion,
-    isolatedSubnetIds: string[],
-    dynamoDbSecurityGroup: SecurityGroup,
     lamdaDynamoExecutionRole: IamRole
   ) {
     return new LambdaFunction(this, name, {
@@ -143,10 +125,6 @@ export class APIStack extends TerraformStack {
       role: lamdaDynamoExecutionRole.arn,
       filename: codeAssets.path,
       layers: [lambdaLayer.arn],
-      vpcConfig: {
-        subnetIds: isolatedSubnetIds,
-        securityGroupIds: [dynamoDbSecurityGroup.id],
-      },
     });
   }
 }

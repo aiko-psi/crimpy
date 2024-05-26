@@ -17,10 +17,6 @@ export class DynamoStack extends TerraformStack {
       tags: {
         Name: "crimpy-dynamo-table",
       },
-      ttl: {
-        attributeName: "TimeToExist",
-        enabled: false,
-      },
       hashKey: "PK",
       rangeKey: "SK",
       attribute: [

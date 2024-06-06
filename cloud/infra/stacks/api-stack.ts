@@ -11,10 +11,14 @@ import { IamRole } from "@cdktf/provider-aws/lib/iam-role";
 import { ArchiveProvider } from "@cdktf/provider-archive/lib/provider";
 import { Apigatewayv2Stage } from "@cdktf/provider-aws/lib/apigatewayv2-stage";
 import { CloudwatchLogGroup } from "@cdktf/provider-aws/lib/cloudwatch-log-group";
+import { Apigatewayv2Authorizer } from "@cdktf/provider-aws/lib/apigatewayv2-authorizer";
+import { CognitoUserPool } from "@cdktf/provider-aws/lib/cognito-user-pool";
 
 type Props = {
   lamdaDynamoExecutionRole: IamRole;
   apiRoleAccessLambda: IamRole;
+  userPool: CognitoUserPool;
+  clientId: string;
 };
 
 export class APIStack extends TerraformStack {
@@ -33,6 +37,17 @@ export class APIStack extends TerraformStack {
     this.api = new Apigatewayv2Api(this, "crimpy-api", {
       name: "crimpy-api",
       protocolType: "HTTP",
+    });
+
+    const authorizer = new Apigatewayv2Authorizer(this, "crimpy-authorizer", {
+      apiId: this.api.id,
+      name: "crimpy-authorizer",
+      authorizerType: "JWT",
+      identitySources: ["$request.header.Authorization"],
+      jwtConfiguration: {
+        audience: [Token.asString(props.clientId)],
+        issuer: "https://" + Token.asString(props.userPool.endpoint),
+      },
     });
 
     new Apigatewayv2Stage(this, "crimpy-api-stage-v1", {
@@ -62,10 +77,8 @@ export class APIStack extends TerraformStack {
       "lambda-layer-archive",
       {
         type: "zip",
-        sourceDir:
-          "../../../../lambdas/lambda-layer/dependency-layer",
-        outputPath:
-          "../../../../lambda-layer/dependency-layer.zip",
+        sourceDir: "../../../../lambdas/lambda-layer/dependency-layer",
+        outputPath: "../../../../lambda-layer/dependency-layer.zip",
       }
     );
 
@@ -82,7 +95,7 @@ export class APIStack extends TerraformStack {
 
     const addGymLambda = this.createAPILambda(
       "gym-lambda",
-      "api-handlers/gym-handler.handler",
+      "api-handlers/gym-handler.postHandler",
       codeAssets,
       lambdaLayer,
       props.lamdaDynamoExecutionRole
@@ -105,8 +118,10 @@ export class APIStack extends TerraformStack {
 
     new Apigatewayv2Route(this, "add-gym-route", {
       apiId: this.api.id,
-      routeKey: "$default",
+      routeKey: "POST /gym",
       target: "integrations/${" + newGymIntegration.id + "}",
+      authorizationType: "JWT",
+      authorizerId: authorizer.id,
     });
   }
 

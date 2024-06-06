@@ -1,48 +1,42 @@
 import "reflect-metadata";
-import { Callback, Context } from "aws-lambda";
+import {
+  APIGatewayProxyCallbackV2,
+  APIGatewayProxyEventV2,
+  Context,
+} from "aws-lambda";
 import { getDynamoConnection } from "../dynamo/connection";
 import { Gym } from "../entities/gym.entity";
 
-export const handler = async (
-  _event: any,
+const connection = getDynamoConnection();
+const entityManger = connection.entityManager;
+
+export const postHandler = async (
+  event: APIGatewayProxyEventV2,
   _context: Context,
-  callback: Callback
+  callback: APIGatewayProxyCallbackV2
 ) => {
-  console.log("starting lambda");
-
-  const connection = getDynamoConnection();
-  const entityManger = connection.entityManager;
-
   const gym = new Gym();
-  gym.name = "Crimpy Climbing";
-  gym.shortName = "Crimpy";
-  gym.location = "London";
-  gym.toploggerId = "123";
-  gym.topoId = "456";
 
-  console.log("Connection created " + JSON.stringify(connection.table));
+  try {
+    const body = JSON.parse(event.body || "");
+    gym.name = body.name;
+    gym.shortName = body.shortName;
+    gym.location = body.location;
+    gym.toploggerId = body.topLoggerId;
+    gym.topoId = body.topoId;
+  } catch (e) {
+    callback(undefined, {
+      statusCode: 400,
+      body: "Parsing failed with error: " + e,
+    });
+  }
 
   // create item
   const resp = await entityManger.create<Gym>(gym);
 
-  console.log("resp from saving " + JSON.stringify(resp));
-
-  // get item
-  const retrievedItem = await entityManger.findOne(Gym, {
-    id: resp.id,
-    shortName: resp.shortName,
-  });
-
-  console.log("retrieved item " + JSON.stringify(retrievedItem));
-
   const response = {
     statusCode: 200,
-    body: JSON.stringify(
-      "Hello from Lambda! The resp from saving is " +
-        JSON.stringify(resp) +
-        " and the retrieved item is " +
-        JSON.stringify(retrievedItem)
-    ),
+    body: JSON.stringify(resp),
   };
   callback(null, response);
 };

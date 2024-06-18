@@ -1,11 +1,12 @@
 import React from "react";
-import { Page, T } from "../../components/Page";
+import { Page, Txt } from "../../components/Page";
+
 
 export function UserPage() {
   return (
     <Page>
-      <T>User</T>
-      <T>This is the user page</T>
+      <Txt>User</Txt>
+      <Txt>This is the user page</Txt>
     </Page>
   );
 }

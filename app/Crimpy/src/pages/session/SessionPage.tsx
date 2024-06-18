@@ -1,11 +1,11 @@
 import React from 'react';
-import { Page, T } from '../../components/Page';
+import { Page, Txt } from '../../components/Page';
 
 export function SessionPage() {
   return (
     <Page>
-      <T>Session</T>
-      <T>This is the session page</T>
+      <Txt>Session</Txt>
+      <Txt>This is the session page</Txt>
     </Page>
   );
 }

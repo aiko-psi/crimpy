@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import TabNavigation from "./src/navigation/TabNavigation";
@@ -6,9 +6,8 @@ import { useState } from "react";
 import { Gym } from "./src/model/gym";
 import { User } from "./src/model/user";
 import { AppContext } from "./src/components/AppContext";
-import { theme } from "./src/style/theme";
-import styled, { ThemeProvider } from "styled-components";
 import { Session } from "./src/model/session";
+import { styled } from "nativewind";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,17 +27,12 @@ export default function App() {
           setSession: setCurrentSession,
         }}
       >
-        <ThemeProvider theme={theme}>
-          <Wrapper>
-            <TabNavigation />
-          </Wrapper>
-        </ThemeProvider>
+        <Wrapper>
+          <TabNavigation />
+        </Wrapper>
       </AppContext.Provider>
     </NavigationContainer>
   );
 }
 
-const Wrapper = styled(View)`
-  flex: 1;
-  background-color: ${(props) => props.theme.background};
-`;
+const Wrapper = styled(View, "flex flex-1  bg-background");

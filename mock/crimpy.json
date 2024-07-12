@@ -1,0 +1,92 @@
+{
+  "uuid": "00d02a6a-bcff-4872-b14d-4f2a35a2ef80",
+  "lastMigration": 32,
+  "name": "Crimpy",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3002,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "adeede1d-557c-45d0-b8e1-28246d078d2b",
+      "type": "http",
+      "documentation": "Get all gyms",
+      "method": "get",
+      "endpoint": "api/gym",
+      "responses": [
+        {
+          "uuid": "d87d816b-b534-4e61-b026-c6dcf678af54",
+          "body": "[{\n  'id':'001' \n\n  shortName: 'DAV KS',\n\n  name: 'Kletteryentrum Nordhessen',\n\n  location: 'Kassel',\n\n  toploggerId: 'id001',\n\n  topoId: null,\n\n  updatedAt: '2024-06-05T16:00:00.000Z',\n},\n{\n  'id':'002' \n\n  shortName: 'Element KS',\n\n  name: 'Element Kassel',\n\n  location: 'Kassel',\n\n  toploggerId: 'id002',\n\n  topoId: null,\n\n  updatedAt: '2024-06-05T16:00:00.000Z',\n}}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "adeede1d-557c-45d0-b8e1-28246d078d2b"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}

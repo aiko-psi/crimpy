@@ -1,6 +1,6 @@
 {
   "name": "lambdas",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Lambdas for project crimpy",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "build-layer-assset": "tsc ",
     "create-layer": "rm -rf lambda-layer/dependency-layer && mkdir -p lambda-layer/dependency-layer/nodejs && cp -r node_modules lambda-layer/dependency-layer/nodejs "
   },
-  "author": "",
+  "author": "Anna Klingauf",
   "license": "ISC",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.138",

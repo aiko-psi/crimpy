@@ -9,7 +9,7 @@ export class DynamoStack extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
-    configureAWSProvider(this);
+    configureAWSProvider(this, id);
 
     this.dynamoDB = new DynamodbTable(this, "crimpy-dynamo", {
       name: "crimpy-dynamo",

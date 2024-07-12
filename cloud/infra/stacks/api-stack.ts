@@ -26,7 +26,7 @@ export class APIStack extends TerraformStack {
   constructor(scope: Construct, id: string, props: Props) {
     super(scope, id);
 
-    configureAWSProvider(this);
+    configureAWSProvider(this, id);
     new ArchiveProvider(this, "archive-provider");
 
     const logGroup = new CloudwatchLogGroup(this, "crimpy-api-lg", {

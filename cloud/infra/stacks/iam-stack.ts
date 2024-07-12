@@ -16,7 +16,7 @@ export class IAMStack extends TerraformStack {
   constructor(scope: Construct, id: string, props: Props) {
     super(scope, id);
 
-    configureAWSProvider(this);
+    configureAWSProvider(this, id);
 
     this.lambdaExecutionRoleWithDynamo =
       this.createLamdaExecutionRoleWithDynamo(props.dynmoDBTable);

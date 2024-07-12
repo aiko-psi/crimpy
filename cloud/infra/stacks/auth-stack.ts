@@ -13,7 +13,7 @@ export class AuthStack extends TerraformStack {
 
   constructor(scope: Construct, id: string) {
     super(scope, id);
-    configureAWSProvider(this);
+    configureAWSProvider(this, id);
 
     const googleClientSecret = new DataAwsSecretsmanagerSecretVersion(
       this,

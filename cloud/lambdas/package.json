@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --runInBand",
-    "build-layer-assset": "tsc ",
-    "create-layer": "rm -rf lambda-layer/dependency-layer && mkdir -p lambda-layer/dependency-layer/nodejs && cp -r node_modules lambda-layer/dependency-layer/nodejs "
+    "build:aws": "npm run build-layer-assset && npm run create-layer",
+    "build-layer-assset": "rm -rf dist && rm tsconfig.tsbuildinfo && tsc",
+    "create-layer": "./create-layer.sh"
   },
   "author": "Anna Klingauf",
   "license": "ISC",
@@ -23,6 +24,7 @@
     "@typedorm/common": "^1.15.4",
     "@typedorm/core": "^1.15.4",
     "aws-sdk": "^2.1628.0",
-    "reflect-metadata": "^0.2.2"
+    "reflect-metadata": "^0.1.13",
+    "crimpy-model": "file:../../crimpy-model"
   }
 }

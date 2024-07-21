@@ -10,5 +10,10 @@ export const globalTable = new Table({
       partitionKey: "GSI1PK",
       sortKey: "GSI1SK",
     },
+    GSI2: {
+      type: INDEX_TYPE.GSI,
+      partitionKey: "GSI2PK",
+      sortKey: "GSI2SK",
+    },
   },
 });

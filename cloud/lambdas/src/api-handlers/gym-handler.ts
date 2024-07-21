@@ -6,7 +6,7 @@ import {
 } from "aws-lambda";
 import { getDynamoConnection } from "../dynamo/connection";
 import { GymService } from "../services/gym-service";
-import { Gym } from "../entities/gym.entity";
+import { Gym } from "crimpy-model/entities/gym.entity";
 
 const connection = getDynamoConnection();
 const entityManger = connection.entityManager;

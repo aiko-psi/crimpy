@@ -2,7 +2,6 @@
   "name": "crimpy",
   "version": "0.1.0",
   "description": "Crimpy root project",
-  "workspaces": ["CrimpyApp", "cloud/infra", "cloud/lambdas", "model"],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

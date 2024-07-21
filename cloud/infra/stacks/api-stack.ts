@@ -85,6 +85,7 @@ export class APIStack extends TerraformStack {
     const lambdaLayer = new LambdaLayerVersion(this, "lambda-layer", {
       layerName: "crimpy-dependency-layer",
       filename: lamdaLayerArchive.outputPath,
+      sourceCodeHash: lamdaLayerArchive.outputBase64Sha256,
       compatibleRuntimes: ["nodejs20.x"],
     });
 

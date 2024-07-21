@@ -17,7 +17,7 @@
       "responses": [
         {
           "uuid": "d87d816b-b534-4e61-b026-c6dcf678af54",
-          "body": "[{\n  'id':'001' \n\n  shortName: 'DAV KS',\n\n  name: 'Kletteryentrum Nordhessen',\n\n  location: 'Kassel',\n\n  toploggerId: 'id001',\n\n  topoId: null,\n\n  updatedAt: '2024-06-05T16:00:00.000Z',\n},\n{\n  'id':'002' \n\n  shortName: 'Element KS',\n\n  name: 'Element Kassel',\n\n  location: 'Kassel',\n\n  toploggerId: 'id002',\n\n  topoId: null,\n\n  updatedAt: '2024-06-05T16:00:00.000Z',\n}}",
+          "body": "[{\n  \"id\":\"001\"\n\n  ä: 'DAV KS',\n\n  name: 'Kletteryentrum Nordhessen',\n\n  location: 'Kassel',\n\n  toploggerId: 'id001',\n\n  topoId: null,\n\n  updatedAt: '2024-06-05T16:00:00.000Z',\n},\n{\n  'id':'002' \n\n  shortName: 'Element KS',\n\n  name: 'Element Kassel',\n\n  location: 'Kassel',\n\n  toploggerId: 'id002',\n\n  topoId: null,\n\n  updatedAt: '2024-06-05T16:00:00.000Z',\n}}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -26,7 +26,22 @@
           "filePath": "",
           "databucketID": "",
           "sendFileAsBody": false,
-          "rules": [],
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,

@@ -1,3 +1,8 @@
+import AWS = require("aws-sdk");
+if (!AWS.config.region) {
+  AWS.config.update({ region: "eu-west-1" });
+}
+
 import "reflect-metadata";
 import {
   APIGatewayProxyCallbackV2,
@@ -40,7 +45,11 @@ export const postHandler = async (
   _context: Context,
   callback: APIGatewayProxyCallbackV2
 ) => {
+  console.log("Running postHandler with event: ", event);
+
   const gym = gymService.parseGym(event.body);
+
+  console.log("Running postHandler with gym: ", gym);
 
   // create item
   const resp = await gymService.createGym(gym);

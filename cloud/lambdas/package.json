@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Lambdas for project crimpy",
   "main": "index.js",
+  "exports": {
+    "./api-handlers/*": "./dist/api-handlers/*.js"
+  },
   "scripts": {
     "test": "jest --runInBand",
     "build:aws": "npm run build-layer-assset && npm run create-layer",

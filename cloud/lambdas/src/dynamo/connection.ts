@@ -3,6 +3,9 @@ import { DocumentClientV2 } from "@typedorm/document-client";
 
 import { globalTable } from "./table";
 import AWS = require("aws-sdk");
+if (!AWS.config.region) {
+  AWS.config.update({ region: "eu-west-1" });
+}
 import { Gym } from "crimpy-model/entities/gym.entity";
 import { Wall } from "crimpy-model/entities/wall.entity";
 import { User } from "crimpy-model/entities/user.entity";

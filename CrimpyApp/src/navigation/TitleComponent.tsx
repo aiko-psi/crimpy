@@ -5,7 +5,7 @@ import { HeaderTitleProps } from "@react-navigation/elements";
 import SessionIndicator from "./SessionIndicator";
 import { styled } from "nativewind";
 import { Txt } from "../components/Page";
-import { fetchBackend } from "../connect/fetch";
+import { fetchBackendAws } from "../connect/fetchAws";
 import { Gym } from "../model/gym";
 
 export default function TitleComponent(props: HeaderTitleProps) {
@@ -13,12 +13,12 @@ export default function TitleComponent(props: HeaderTitleProps) {
   const { gym, setGym, session } = useContext(AppContext) || {};
 
   useEffect(() => {
-    if (availableGyms == null) {
-      fetchBackend<Gym[]>("/gym").then((gyms) => {
-        console.log(gyms);
-        setAvailableGyms(gyms);
-      });
-    }
+    // if (availableGyms == null) {
+    //   fetchBackendAws<Gym[]>("/gym").then((gyms) => {
+    //     console.log(gyms);
+    //     setAvailableGyms(gyms);
+    //   });
+    // }
   }, [availableGyms]);
 
   const pickGym = () => {

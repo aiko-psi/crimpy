@@ -6,6 +6,7 @@ export function GymPage() {
     <Page>
       <Txt>Gym</Txt>
       <Txt>This is the gym page</Txt>
+      
     </Page>
   );
 }

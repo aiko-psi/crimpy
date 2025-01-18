@@ -30,3 +30,14 @@ This will start expo and you can connect your phone with it. For the android emu
 
 You should be able to enter the GUI under the given address.
 
+### Types
+
+Types are shared between pocketbase and the app with [zod-pocketbase](https://zod-pocketbase.vercel.app/). Changing the types or the schema should take place in pocketbase. You can use the admin gui or write a migration file. Follow this steps to get the changes trough:
+
+- Start pocketbase (see above)
+- Make changes in gui
+- Make sure you are in the pocketbase directory
+- Write migrations with `./pocketbase migrate collections` and follow the instructions
+- Change to the mobile directory `cd ../mobile`
+- Generate the schema with `npx zod-pocketbase`
+

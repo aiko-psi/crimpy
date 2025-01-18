@@ -21,7 +21,7 @@ It contains all the required libraries for developing with this stack. It can be
 - Install libraries with `npm install`
 - Start with `npm start`
 
-This will start expo and you can connect your phone with it. For the android emulator, run `/opt/android-sdk//emulator/emulator @crimpyTestDevice -gpu host` in the container. Then press `a` in the expo terminal.
+This will start expo and you can connect your phone with it. For the android emulator, run `npm run emulator` in the container. Then press `a` in the expo terminal. To connect the app to the locally running pocketbase, you have to reverse ports with `npm run connect`.
 
 ### Starting pocketbase
 

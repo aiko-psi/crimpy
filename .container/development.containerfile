@@ -3,7 +3,7 @@ FROM registry.fedoraproject.org/fedora-toolbox:41
 ENV PATH="/opt/android-sdk/cmdline-tools/latest/bin:$PATH" 
 ENV ANDROID_HOME=/opt/android-sdk
 
-RUN sudo dnf install -y npm java-17-openjdk libxkbfile
+RUN sudo dnf install -y npm java-17-openjdk libxkbfile android-tools
 RUN sudo mkdir -p /opt/android-sdk/cmdline-tools/
 WORKDIR /opt/android-sdk/cmdline-tools/
 RUN wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip 
